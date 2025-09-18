@@ -15,6 +15,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",  # React dev server
         "http://localhost:3000",  # Production frontend
+        "http://localhost:8000",  # Backend dev server
         "http://your-server-ip:3000",  # Replace with your actual server IP
         "https://your-domain.com",  # If using HTTPS
         "https://gcs-poc-frontend.nawwa.xyz",  # Production frontend domain

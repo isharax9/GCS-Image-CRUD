@@ -10,10 +10,40 @@ function App() {
   const [uploading, setUploading] = useState(false)
   const [previewUrl, setPreviewUrl] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [imageUrls, setImageUrls] = useState({})
 
   useEffect(() => {
     fetchFiles()
   }, [])
+
+  useEffect(() => {
+    // Fetch image URLs when files change
+    const fetchImageUrls = async () => {
+      const urls = {}
+      for (const file of files) {
+        try {
+          const response = await axios.get(`${API_BASE}/download/${file}`)
+          urls[file] = response.data.download_url
+        } catch (error) {
+          console.error('Error getting image URL for', file, error)
+          // Fallback to SVG placeholder
+          urls[file] = `data:image/svg+xml;base64,${btoa(`
+            <svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+              <rect width="200" height="150" fill="#f0f0f0"/>
+              <text x="100" y="75" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">
+                ${file}
+              </text>
+            </svg>
+          `)}`
+        }
+      }
+      setImageUrls(urls)
+    }
+
+    if (files.length > 0) {
+      fetchImageUrls()
+    }
+  }, [files])
 
   const fetchFiles = async () => {
     setLoading(true)
@@ -78,10 +108,7 @@ function App() {
     }
   }
 
-  const getImageUrl = (filename) => {
-    // For demo purposes, we'll use a placeholder. In production, you'd get the actual GCS URL
-    return `https://via.placeholder.com/200x150/4CAF50/white?text=${encodeURIComponent(filename)}`
-  }
+
 
   return (
     <div className="app">
@@ -133,11 +160,25 @@ function App() {
                 <div key={file} className="image-card">
                   <div className="image-container">
                     <img
-                      src={getImageUrl(file)}
+                      src={imageUrls[file] || `data:image/svg+xml;base64,${btoa(`
+                        <svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+                          <rect width="200" height="150" fill="#f0f0f0"/>
+                          <text x="100" y="75" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">
+                            Loading...
+                          </text>
+                        </svg>
+                      `)}`}
                       alt={file}
                       className="gallery-image"
                       onError={(e) => {
-                        e.target.src = `https://via.placeholder.com/200x150/2196F3/white?text=${encodeURIComponent(file)}`
+                        e.target.src = `data:image/svg+xml;base64,${btoa(`
+                          <svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="150" fill="#f0f0f0"/>
+                            <text x="100" y="75" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">
+                              ${file}
+                            </text>
+                          </svg>
+                        `)}`
                       }}
                     />
                   </div>
