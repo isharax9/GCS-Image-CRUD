@@ -4,6 +4,7 @@ module.exports = {
       name: 'gcs-backend',
       script: 'main.py',
       interpreter: 'python3',
+      args: '-m uvicorn main:app --host 0.0.0.0 --port 8000',
       cwd: './backend',
       env: {
         NODE_ENV: 'production'
@@ -19,7 +20,7 @@ module.exports = {
     {
       name: 'gcs-frontend',
       script: 'serve',
-      args: 'dist -s -l 3000',
+      args: 'dist -p 3000 -s',
       cwd: './frontend',
       env: {
         NODE_ENV: 'production'
