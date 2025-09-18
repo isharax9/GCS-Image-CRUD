@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
-const API_BASE = 'https://gcs-poc-frontend.nawwa.xyz'
+const API_BASE = 'http://localhost:8000' // Update with your backend URL
 
 function App() {
   const [files, setFiles] = useState([])
