@@ -6,24 +6,33 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #1a202c;
+  background: #f7fafc;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
   padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  margin: 2rem;
 }
 
 /* Header */
 .app-header {
   text-align: center;
   margin-bottom: 3rem;
-  color: white;
+  color: #1a202c;
+  padding: 2rem 0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .app-header h1 {
@@ -34,7 +43,8 @@ body {
 
 .app-header p {
   font-size: 1.2rem;
-  opacity: 0.9;
+  color: #718096;
+  font-weight: 400;
 }
 
 /* Upload Section */
@@ -43,23 +53,26 @@ body {
 }
 
 .upload-card {
-  background: white;
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  border: 2px dashed #e0e0e0;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 2px solid #e2e8f0;
   transition: all 0.3s ease;
 }
 
 .upload-card:hover {
   border-color: #667eea;
   transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
 .upload-card h2 {
-  color: #333;
+  color: #1a202c;
   margin-bottom: 1.5rem;
   text-align: center;
+  font-weight: 600;
+  font-size: 1.5rem;
 }
 
 .upload-form {
@@ -127,17 +140,17 @@ body {
 
 /* Gallery Section */
 .gallery-section {
-  background: white;
+  background: transparent;
   border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2rem 0;
 }
 
 .gallery-section h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #333;
+  color: #1a202c;
   font-size: 2rem;
+  font-weight: 600;
 }
 
 /* Loading State */
@@ -175,17 +188,17 @@ body {
 
 /* Image Card */
 .image-card {
-  background: #f8f9fa;
+  background: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
-  border: 1px solid #e9ecef;
+  border: 1px solid #e2e8f0;
 }
 
 .image-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .image-container {
@@ -212,12 +225,13 @@ body {
 .image-name {
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: #1a202c;
   word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-weight: 500;
 }
 
 .image-actions {
