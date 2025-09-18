@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
 
-const API_BASE = 'https://gcs-poc-backend.nawwa.xyz'
+const API_BASE = 'https://gcs-poc-frontend.nawwa.xyz'
 
 function App() {
   const [files, setFiles] = useState([])
