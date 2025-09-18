@@ -17,6 +17,8 @@ app.add_middleware(
         "http://localhost:3000",  # Production frontend
         "http://your-server-ip:3000",  # Replace with your actual server IP
         "https://your-domain.com",  # If using HTTPS
+        "https://gcs-poc-frontend.nawwa.xyz",  # Production frontend domain
+        "http://gcs-poc-backend.nawwa.xyz",  # Production backend domain (API)
     ],
     allow_credentials=True,
     allow_methods=["*"],
